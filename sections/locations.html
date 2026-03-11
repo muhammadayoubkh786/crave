@@ -1,0 +1,167 @@
+<section id="locations" class="py-5 bg-white overflow-hidden">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&family=Inter:wght@400;700;900&display=swap');
+
+        :root {
+            --brand-orange: #d97706;
+            --deep-brown: #2d241e;
+            --brand-cream: #cdb694;
+        }
+
+        #locations { padding: 80px 0 !important; }
+
+        /* --- THE BOX MOTION --- */
+        @keyframes boxFlyInLeft {
+            0% { opacity: 0; transform: translateX(-150px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes boxFlyInRight {
+            0% { opacity: 0; transform: translateX(150px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes boxFlyInBottom {
+            0% { opacity: 0; transform: translateY(100px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- THE TEXT MOTION --- */
+        @keyframes textSlideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .box-motion-left { animation: boxFlyInLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .box-motion-right { animation: boxFlyInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .box-motion-bottom { animation: boxFlyInBottom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .loc-grid-card div, .loc-grid-card a, .loc-grid-card h3 {
+            opacity: 0;
+            animation: textSlideUp 0.8s ease-out forwards;
+            animation-delay: 0.5s; 
+        }
+
+        .loc-grid-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 40px;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+            opacity: 0; 
+        }
+
+        .loc-grid-card:hover {
+            background: var(--deep-brown);
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(45, 36, 30, 0.2);
+        }
+
+        .loc-title {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--deep-brown);
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .loc-grid-card:hover .loc-title { color: var(--brand-cream); }
+
+        .loc-address {
+            font-family: 'Inter', sans-serif;
+            color: #6c757d;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .loc-grid-card:hover .loc-address { color: #fff; }
+
+        .badge-loc {
+            background: var(--brand-orange);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 0.7rem;
+            padding: 8px 15px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-transform: uppercase;
+        }
+
+        .loc-link {
+            font-family: 'El Messiri', sans-serif;
+            color: var(--brand-orange);
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 30px;
+            display: inline-block;
+        }
+
+        .loc-grid-card:hover .loc-link { color: #fff; }
+
+        .loc-section-title {
+            font-family: 'El Messiri', sans-serif;
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            color: var(--deep-brown);
+        }
+
+        @media (max-width: 991px) {
+            .text-lg-end, .loc-section-title { text-align: center !important; }
+            .loc-grid-card { padding: 30px; text-align: center; }
+            .badge-loc { width: 100%; position: relative; margin-bottom: 15px; }
+        }
+    </style>
+
+    <div class="container">
+        <div class="row mb-5 align-items-center box-motion-bottom">
+            <div class="col-lg-7">
+                <h2 class="loc-section-title mb-0">FIND US</h2>
+            </div>
+            <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
+                <p class="mb-0 fw-bold text-uppercase" style="color: var(--brand-orange); letter-spacing: 3px; font-size: 0.9rem;">
+                    Norwich's Favourite Burger Spot
+                </p>
+                <div style="height: 3px; width: 60px; background: var(--brand-cream); display: inline-block;" class="mt-2"></div>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="loc-grid-card box-motion-left">
+                    <span class="badge-loc">OPEN NOW</span>
+                    <div>
+                        <h3 class="loc-title">Norwich</h3>
+                        <p class="loc-address">The Terrace, NR1 3EB<br>Norwich, UK</p>
+                    </div>
+                    <a href="#" class="loc-link text-uppercase">ORDER DELIVERY →</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="loc-grid-card box-motion-bottom" style="animation-delay: 0.2s;">
+                    <span class="badge-loc">OPENING SOON</span>
+                    <div>
+                        <h3 class="loc-title">Dereham</h3>
+                        <p class="loc-address">Market Place, NR19<br>Coming Summer 2026</p>
+                    </div>
+                    <a href="#" class="loc-link text-uppercase">GET UPDATES →</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="loc-grid-card box-motion-right" style="animation-delay: 0.4s;">
+                    <span class="badge-loc">COLLECTION ONLY</span>
+                    <div>
+                        <h3 class="loc-title">Cringleford</h3>
+                        <p class="loc-address">Colney Lane, NR4<br>Norwich Hub</p>
+                    </div>
+                    <a href="#" class="loc-link text-uppercase">FIND ON MAP →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

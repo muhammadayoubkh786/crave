@@ -1,0 +1,164 @@
+<footer class="pt-5 pb-4 pt-lg-10 overflow-hidden" style="background: #0a0a0a; color: #fff;">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Playfair+Display:wght@700;900&display=swap');
+
+        .footer-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .footer-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .footer-heading {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d97706;
+            margin-bottom: 25px;
+        }
+
+        .footer-link {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #d97706;
+            transform: translateX(8px);
+        }
+
+        .social-circle {
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            transition: 0.4s;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .social-circle:hover {
+            background: #d97706;
+            border-color: #d97706;
+        }
+
+        .newsletter-input {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 16px;
+            color: #fff;
+            width: 100%;
+            margin-bottom: 12px;
+            outline: none;
+        }
+
+        .btn-subscribe {
+            background: #d97706;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-subscribe:hover {
+            background: #b45309;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row g-4 g-lg-5">
+            <div class="col-lg-4 footer-reveal">
+                <div class="footer-logo mb-4">CRAVE</div>
+                <p class="text-white-50 pe-lg-5 mb-4">Serving Norwich’s finest 100% British beef smash burgers and signature buttermilk chicken. Freshly made, seriously bold.</p>
+                <div class="d-flex">
+                    <a href="#" class="social-circle" aria-label="Facebook">FB</a>
+                    <a href="#" class="social-circle" aria-label="Instagram">IG</a>
+                    <a href="#" class="social-circle" aria-label="TikTok">TK</a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-2 footer-reveal">
+                <h5 class="footer-heading">Navigate</h5>
+                <nav>
+                    <a href="#about" class="footer-link">Our Story</a>
+                    <a href="#food-gallery" class="footer-link">The Food</a>
+                    <a href="#locations" class="footer-link">Locations</a>
+                    <a href="#faq-section" class="footer-link">FAQs</a>
+                </nav>
+            </div>
+
+            <div class="col-6 col-lg-3 footer-reveal">
+                <h5 class="footer-heading">Visit Us</h5>
+                <address style="font-style: normal;">
+                    <span class="footer-link">The Terrace, NR1 3EB</span>
+                    <span class="footer-link">Colney Lane, NR4</span>
+                    <span class="footer-link">Dereham (Coming Soon)</span>
+                </address>
+            </div>
+
+            <div class="col-lg-3 footer-reveal">
+                <h5 class="footer-heading">Get Offers</h5>
+                <p class="small text-white-50 mb-3">Join our list for exclusive local deals.</p>
+                <form onsubmit="event.preventDefault();">
+                    <input type="email" class="newsletter-input" placeholder="Email Address" required>
+                    <button type="submit" class="btn-subscribe">Sign Up</button>
+                </form>
+            </div>
+        </div>
+
+        <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+        
+        <div class="footer-reveal">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="small text-white-50 m-0">© 2026 CRAVE KITCHEN NORWICH. ALL RIGHTS RESERVED.</p>
+                </div>
+                <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                    <a href="#" class="small text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="small text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function initFooter() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.footer-reveal').forEach(el => observer.observe(el));
+        })();
+    </script>
+</footer>

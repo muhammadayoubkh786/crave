@@ -1,0 +1,113 @@
+<section class="py-5" style="background: #0a0a0a; color: #fff;">
+    <style>
+        .package-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .package-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .package-card {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            transition: 0.4s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .package-card:hover, .package-card.selected {
+            border-color: #d97706; /* brand-orange */
+            background: #1a1a1a;
+        }
+
+        .package-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .consent-box {
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid #d97706;
+            padding: 30px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="package-reveal">
+            <h5 class="text-uppercase fw-bold mb-4" style="letter-spacing: 3px; color: #d97706; font-size: 0.85rem;">
+                Website Packages (Choose One)
+            </h5>
+            <div class="package-grid">
+                <label class="package-card">
+                    <input type="radio" name="web-package" value="starter">
+                    <h4 class="mb-2" style="font-family: 'Playfair Display', serif;">Starter</h4>
+                    <p class="small text-white-50 mb-0">Single Page Menu & Info</p>
+                </label>
+                <label class="package-card">
+                    <input type="radio" name="web-package" value="pro">
+                    <h4 class="mb-2" style="font-family: 'Playfair Display', serif;">Standard</h4>
+                    <p class="small text-white-50 mb-0">Multi-page with Reservations</p>
+                </label>
+                <label class="package-card">
+                    <input type="radio" name="web-package" value="elite">
+                    <h4 class="mb-2" style="font-family: 'Playfair Display', serif;">Elite</h4>
+                    <p class="small text-white-50 mb-0">Full E-commerce & Branding</p>
+                </label>
+            </div>
+        </div>
+
+        <div class="consent-box package-reveal">
+            <div class="d-flex align-items-start mb-4">
+                <input type="checkbox" class="mt-1" id="footer-consent" style="accent-color: #d97706; width: 20px; height: 20px;">
+                <label class="ms-3 small text-white-50" for="footer-consent">
+                    By checking this box, I consent to receive marketing messages. <a href="#" class="text-white text-decoration-underline">Privacy Policy</a>.
+                </label>
+            </div>
+            <div class="row g-3 border-top border-secondary pt-3 mt-2" style="border-opacity: 0.1;">
+                <div class="col-sm-6">
+                    <span style="font-size: 0.7rem; color: #d97706; text-transform: uppercase;">Timezone</span>
+                    <p class="small m-0">Europe/London (GMT+00:00)</p>
+                </div>
+                <div class="col-sm-6">
+                    <span style="font-size: 0.7rem; color: #d97706; text-transform: uppercase;">IP Address</span>
+                    <p class="small m-0 text-white-50">2a06:5902:2e:bd00:e4bd:7c0:7b81:2d42</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function initPackages() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.package-reveal').forEach(el => observer.observe(el));
+
+            document.querySelectorAll('.package-card').forEach(card => {
+                card.onclick = function() {
+                    document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const radio = this.querySelector('input[type="radio"]');
+                    if(radio) radio.checked = true;
+                };
+            });
+        })();
+    </script>
+</section>

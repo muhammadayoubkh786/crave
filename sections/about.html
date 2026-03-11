@@ -1,0 +1,157 @@
+<section id="about" class="py-lg-10 py-5 border-bottom overflow-hidden bg-white">
+    <style>
+        :root {
+            --brand-orange: #d97706;
+            --deep-brown: #2d241e;
+            --brand-cream: #fcf8f1;
+        }
+
+        #about {
+            --about-h2: clamp(2.5rem, 6vw, 4rem);
+            background-color: var(--brand-cream) !important;
+        }
+
+        .py-lg-10 { padding: 80px 0; }
+
+        .about-image-container {
+            position: relative;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            margin-bottom: 40px; 
+        }
+
+        .about-image-container.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .about-img-wrap {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: #eee;
+            border: 10px solid #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-img-main {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-floating-text {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            background: var(--brand-orange);
+            color: white;
+            padding: clamp(20px, 4vw, 35px);
+            font-family: 'El Messiri', sans-serif;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 900;
+            max-width: 240px;
+            line-height: 1.1;
+            box-shadow: 10px 10px 0px var(--deep-brown);
+            z-index: 2;
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease-out 0.3s;
+        }
+
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-title {
+            font-size: var(--about-h2);
+            font-weight: 900;
+            line-height: 1;
+            color: var(--deep-brown);
+            font-family: 'El Messiri', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .tracking-widest {
+            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            color: var(--brand-orange) !important;
+        }
+
+        .btn-crave {
+            background: var(--deep-brown);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .btn-crave:hover {
+            background: var(--brand-orange);
+            color: white;
+        }
+
+        @media (max-width: 991px) {
+            .py-lg-10 { padding: 40px 0; }
+            .about-image-container { transform: translateY(30px); margin-bottom: 60px; }
+            .about-floating-text { right: 10px; bottom: -20px; max-width: 180px; }
+            .ps-lg-5 { padding-left: 15px !important; margin-top: 20px; }
+        }
+    </style>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-image-container" id="about-img-trigger">
+                    <div class="about-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=800" class="about-img-main" alt="Crave Kitchen Norwich">
+                    </div>
+                    <div class="about-floating-text">PROPER FOOD. <br>PROPER PASSION.</div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 ps-lg-5">
+                <div class="reveal-text" id="about-text-trigger">
+                    <p class="fw-bold tracking-widest text-uppercase mb-2">Quality Driven</p>
+                    <h2 class="about-title mb-4">THE STORY <br> BEHIND CRAVE</h2>
+                    
+                    <p class="lead text-muted mb-4" style="line-height: 1.6; font-size: 1.1rem; color: #444 !important;">
+                        At Crave, we believe comfort food should be done right. No shortcuts, just quality ingredients and bold flavours.
+                    </p>
+                    
+                    <p class="text-muted mb-4">
+                        We specialise in premium British beef smash burgers, hand-breaded buttermilk chicken, and wings that pack a punch. By sourcing from local farmers and trusted suppliers, we ensure every bite meets the high standards our Norwich community deserves.
+                    </p>
+
+                    <p class="text-muted mb-5">
+                        Whether it's the perfect crispy edge on our burgers or the signature heat of our Naga wings, everything we serve is cooked fresh to order. <strong>We don't just make fast food; we make great food, served fast.</strong>
+                    </p>
+                    
+                    <button class="btn btn-crave rounded-0 text-uppercase">Discover Our Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const aboutSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        const imgTrigger = document.querySelector('#about-img-trigger');
+        const textTrigger = document.querySelector('#about-text-trigger');
+        
+        if(imgTrigger) aboutSectionObserver.observe(imgTrigger);
+        if(textTrigger) aboutSectionObserver.observe(textTrigger);
+    </script>
+</section>

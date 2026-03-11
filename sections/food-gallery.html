@@ -1,0 +1,184 @@
+<section id="food-gallery" class="py-lg-10 py-5 bg-white overflow-hidden position-relative">
+    <style>
+        :root { 
+            --brand-orange: #d97706;
+            --deep-brown: #2d241e;
+            --brand-cream: #cdb694; /* Your Gallery accent */
+        }
+        
+        .py-lg-10 { padding: 100px 0; }
+
+        /* --- ANIMATION STATES (Like your About Section) --- */
+        .reveal-frame {
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Slide from Left */
+        .reveal-left { transform: translateX(-80px); }
+        /* Slide from Right */
+        .reveal-right { transform: translateX(80px); }
+
+        .reveal-frame.visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+
+        /* --- GALLERY STYLING --- */
+        .food-gallery-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            color: var(--deep-brown);
+        }
+
+        .bg-text-watermark {
+            position: absolute;
+            font-size: 18vw;
+            font-weight: 900;
+            color: rgba(205, 182, 148, 0.05);
+            z-index: 0;
+            top: 10%; left: -5%;
+            pointer-events: none;
+        }
+
+        .food-frame {
+            position: relative;
+            padding: clamp(10px, 3vw, 20px);
+            background: #fff;
+            z-index: 1;
+            height: 100%;
+            border: 1px solid #eee;
+            transition: 0.4s;
+        }
+
+        .food-frame:hover { border-color: var(--brand-cream); }
+
+        .img-reveal-wrap {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            aspect-ratio: 4 / 5; 
+            background: #111;
+        }
+
+        @media (min-width: 992px) {
+            .ratio-tall { aspect-ratio: 3 / 4.5; }
+            .ratio-wide { aspect-ratio: 16 / 9; }
+            .offset-top { margin-top: 80px; }
+        }
+
+        .img-reveal-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .food-frame:hover img { transform: scale(1.1); }
+
+        .food-category {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--brand-cream);
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .discover-btn {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--brand-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* color: var(--brand-cream); */
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .food-frame:hover .discover-btn {
+            background: var(--brand-cream);
+            /* color: #fff; */
+        }
+    </style>
+
+    <div class="bg-text-watermark">CRAVE</div>
+
+    <div class="container position-relative">
+        <div class="row g-4 g-lg-5 align-items-center mb-5">
+            <div class="col-lg-6">
+                <div class="food-frame reveal-frame reveal-left">
+                    <div class="img-reveal-wrap ratio-tall">
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1200" alt="Oklahoma">
+                    </div>
+                    <div class="food-meta d-flex justify-content-between align-items-end mt-4">
+                        <div>
+                            <span class="food-category">Signature Burger</span>
+                            <h3 class="fw-black">OKLAHOMA <br> BURGER</h3>
+                        </div>
+                        <a href="#" class="discover-btn">→</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-5 offset-lg-1 py-4 reveal-frame reveal-right">
+                <h2 class="food-gallery-title mb-4">THE <br><span style="color:var(--brand-cream)">ART</span> OF <br> BEEF</h2>
+                <p class="lead text-muted mb-4">100% Grass-Fed Aberdeen Angus Beef, smashed with onions and secret spices. This isn't just a burger; it's a legacy.</p>
+                <div class="d-none d-lg-block">
+                    <hr style="width: 50px; border-top: 3px solid var(--brand-cream); opacity: 1;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 g-lg-5">
+            <div class="col-lg-4">
+                <div class="food-frame offset-top reveal-frame reveal-left">
+                    <div class="img-reveal-wrap ratio-tall">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=800" alt="Kunafa">
+                    </div>
+                    <div class="food-meta d-flex justify-content-between align-items-end mt-4">
+                        <div>
+                            <span class="food-category">Dessert</span>
+                            <h3 class="fw-black">KUNAFA <br> CAKE</h3>
+                        </div>
+                        <a href="#" class="discover-btn">→</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="food-frame reveal-frame reveal-right">
+                    <div class="img-reveal-wrap ratio-wide">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200" alt="Pulled Lamb">
+                    </div>
+                    <div class="food-meta d-flex justify-content-between align-items-end mt-4">
+                        <div>
+                            <span class="food-category">Slow Cooked</span>
+                            <h3 class="fw-black">WE PULLED <br> THE LAMB</h3>
+                        </div>
+                        <a href="#" class="discover-btn">→</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Trigger animations when they enter the screen
+        const galleryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe all reveal-frame items
+        document.querySelectorAll('.reveal-frame').forEach(el => galleryObserver.observe(el));
+    </script>
+</section>

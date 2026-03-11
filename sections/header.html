@@ -1,0 +1,237 @@
+<style>
+    /* FORCE THE WRAPPER TO BE FIXED */
+    #header-section {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 99999 !important;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #main-nav {
+        padding: 10px 0;
+        transition: all 0.4s ease;
+        background: transparent;
+        height: 80px; /* Slim height remains the same */
+        display: flex;
+        align-items: center;
+    }
+
+    /* SCROLLED STATE: Adding the "Cover" to prevent text mixing */
+    .header-scrolled {
+        /* Glassmorphism effect: White cover with blur */
+        background: rgba(255, 255, 255, 0.95) !important; 
+        backdrop-filter: blur(10px); 
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    /* LOGO STYLING: 100px size that overflows nicely */
+    .navbar-brand {
+        position: relative;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar-brand img {
+        height: 100px; 
+        width: auto;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: left center;
+        margin-top: 5px; 
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+    
+    .header-scrolled .navbar-brand img {
+        height: 80px; /* Scales down slightly to fit the scrolled bar */
+        margin-top: 0;
+    }
+
+    /* TEXT COLORS & BRANDING */
+    .nav-link {
+        color: #ffffff !important; /* Initial white for hero section */
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 0.8rem;
+        transition: 0.3s;
+        position: relative;
+        padding: 10px 15px !important;
+    }
+
+    /* Modern Hover Underline */
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 5px;
+        left: 15px;
+        background-color: var(--brand-orange);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+        width: calc(100% - 30px);
+    }
+
+    /* Color change when scrolled over white cover */
+    .header-scrolled .nav-link {
+        color: var(--deep-brown) !important; 
+    }
+
+    /* MODERN ORDER BUTTON */
+    .btn-order-nav {
+        background: transparent;
+        color: #fff !important;
+        border: 2px solid var(--brand-orange); 
+        padding: 10px 25px;
+        font-family: 'El Messiri', sans-serif;
+        font-weight: 700;
+        border-radius: 0;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        margin-left: 15px;
+    }
+
+    .btn-order-nav:hover {
+        background: var(--brand-orange);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(217, 119, 6, 0.4);
+    }
+
+    .header-scrolled .btn-order-nav {
+        background: var(--brand-orange);
+        border-color: var(--brand-orange);
+        color: #ffffff !important;
+    }
+
+    /* HAMBURGER & CROSS ANIMATION */
+    .navbar-toggler { 
+        border: none !important; 
+        outline: none !important;
+        box-shadow: none !important;
+        width: 45px;
+        height: 45px;
+        padding: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .navbar-toggler .navbar-toggler-icon {
+        background-image: none !important;
+        position: relative;
+        height: 2px;
+        width: 28px;
+        background: #ffffff; 
+        display: block;
+        transition: 0.3s ease-in-out;
+    }
+
+    .navbar-toggler .navbar-toggler-icon::before,
+    .navbar-toggler .navbar-toggler-icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: inherit; 
+        transition: 0.3s ease-in-out;
+    }
+
+    .navbar-toggler .navbar-toggler-icon::before { top: -8px; }
+    .navbar-toggler .navbar-toggler-icon::after { top: 8px; }
+
+    /* The 'X' Animation State (Always visible) */
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+        background: transparent !important;
+    }
+
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+        top: 0;
+        transform: rotate(45deg);
+        background: var(--deep-brown) !important;
+    }
+
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+        background: var(--deep-brown) !important;
+    }
+
+    /* Adapt Hamburger color on scroll */
+    .header-scrolled .navbar-toggler .navbar-toggler-icon {
+        background: var(--deep-brown); 
+    }
+
+    /* Mobile Menu - Brand Cream #cdb694 */
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            background: #cdb694; 
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .navbar-collapse .nav-link { 
+            color: #2d241e !important; 
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg" id="main-nav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/logo.png" alt="CRAVE Logo">
+        </a>
+        
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#craveNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="craveNavbar">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/services.html">Service</a></li>
+                <li class="nav-item"><a class="nav-link" href="/blog.html">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="/faq.html">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
+                <li class="nav-item">
+                    <button class="btn-order-nav">ORDER NOW</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    (function() {
+        const headerWrapper = document.getElementById('header-section');
+        const craveNavbar = document.getElementById('craveNavbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function doScroll() {
+            if (window.scrollY > 50) {
+                headerWrapper.classList.add('header-scrolled');
+            } else {
+                headerWrapper.classList.remove('header-scrolled');
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(craveNavbar);
+                    if (bsCollapse) bsCollapse.hide();
+                }
+            });
+        });
+
+        window.addEventListener('scroll', doScroll);
+        doScroll();
+    })();
+</script>

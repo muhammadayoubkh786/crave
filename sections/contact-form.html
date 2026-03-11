@@ -1,0 +1,192 @@
+<section id="contact-section" class="py-5 bg-white overflow-hidden">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Playfair+Display:wght@700;900&display=swap');
+
+        :root { 
+            --brand-orange: #d97706; 
+            --text-dark: #1a1a1a;
+        }
+
+        /* --- CONTACT ANIMATIONS --- */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .reveal-active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* --- TYPOGRAPHY & FORM --- */
+        .serif-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            color: var(--text-dark);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            line-height: 1.1;
+        }
+
+        .location-title {
+            font-family: 'El Messiri', sans-serif;
+            color: var(--brand-orange);
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-info-card {
+            background: #fdfaf7;
+            border-left: 5px solid var(--brand-orange);
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        /* Luxury Input Styling */
+        .premium-input {
+            border: none;
+            border-bottom: 2px solid #eee;
+            border-radius: 0 !important;
+            padding: 15px 5px !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            transition: 0.4s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .premium-input:focus {
+            border-bottom-color: var(--brand-orange);
+        }
+
+        .input-label {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .btn-send {
+            background: var(--text-dark);
+            color: #fff;
+            border: none;
+            letter-spacing: 2px;
+            padding: 18px !important;
+            font-family: 'El Messiri', sans-serif;
+            font-weight: 700;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-send::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--brand-orange);
+            transition: 0.4s;
+            z-index: -1;
+        }
+
+        .btn-send:hover::before {
+            left: 0;
+        }
+
+        .btn-send:hover {
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.2);
+        }
+    </style>
+
+    <div class="container py-lg-5">
+        <div class="row g-5 align-items-center">
+            
+            <div class="col-lg-5 reveal-left" id="contact-info">
+                <h2 class="serif-title mb-5">Visit Our<br>Kitchens</h2>
+                
+                <div class="mb-5">
+                    <h5 class="location-title fw-bold">LAKESIDE</h5>
+                    <p class="text-muted mb-0 fw-medium">West Thurrock, Essex RM20 2ZP</p>
+                    <p class="small text-muted">Open Daily: 11:00 AM - 11:00 PM</p>
+                </div>
+
+                <div class="mb-5">
+                    <h5 class="location-title fw-bold">LEYTON</h5>
+                    <p class="text-muted mb-0 fw-medium">High Rd, London E10 6AE</p>
+                    <p class="small text-muted">Open Daily: 12:00 PM - 10:00 PM</p>
+                </div>
+
+                <div class="contact-info-card mt-5">
+                    <p class="mb-2 modern-font">
+                        <span class="metadata-label d-block" style="color:var(--brand-orange); font-size: 0.7rem; font-weight: 800;">DIRECT LINE</span>
+                        <strong style="font-size: 1.1rem;">+44 20 1234 5678</strong>
+                    </p>
+                    <p class="mb-0 modern-font">
+                        <span class="metadata-label d-block" style="color:var(--brand-orange); font-size: 0.7rem; font-weight: 800;">INQUIRIES</span>
+                        <strong>hello@craveandpepper.com</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-7 reveal-right" id="contact-form">
+                <div class="p-4 p-lg-5 shadow-lg border">
+                    <form action="#" class="row g-4">
+                        <div class="col-md-6">
+                            <label class="input-label">Your Name</label>
+                            <input type="text" class="form-control premium-input" placeholder="e.g. Ayoub">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="input-label">Email Address</label>
+                            <input type="email" class="form-control premium-input" placeholder="name@email.com">
+                        </div>
+                        <div class="col-12">
+                            <label class="input-label">Subject</label>
+                            <select class="form-select premium-input">
+                                <option selected disabled>Select Purpose</option>
+                                <option>General Inquiry</option>
+                                <option>Franchise Opportunity</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="input-label">How can we help?</label>
+                            <textarea class="form-control premium-input" rows="4" placeholder="Type your message here..."></textarea>
+                        </div>
+                        <div class="col-12 mt-5">
+                            <button type="submit" class="btn btn-send w-100 rounded-0">
+                                SEND MESSAGE
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const contactObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        contactObserver.observe(document.querySelector('#contact-info'));
+        contactObserver.observe(document.querySelector('#contact-form'));
+    </script>
+</section>

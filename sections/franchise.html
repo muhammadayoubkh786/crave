@@ -1,0 +1,195 @@
+<section id="franchise" class="py-10 bg-light overflow-hidden">
+    <style>
+        .franchise-badge {
+            background: #000;
+            color: #fff;
+            padding: 8px 20px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .franchise-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: calc(2.5rem + 2vw);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+        }
+
+        .support-text {
+            border-left: 4px solid #e63946;
+            padding-left: 30px;
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        /* REASONS GRID */
+        .reason-card {
+            background: #fff;
+            padding: 40px;
+            height: 100%;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: #e63946;
+        }
+
+        .reason-number {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(0,0,0,0.03);
+            transition: 0.5s;
+        }
+
+        .reason-card:hover .reason-number {
+            color: rgba(230, 57, 70, 0.1);
+            transform: scale(1.2);
+        }
+
+        .reason-icon {
+            width: 50px;
+            height: 50px;
+            background: #f8f8f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            transition: 0.4s;
+        }
+
+        .reason-card:hover .reason-icon {
+            background: #e63946;
+            color: #fff;
+        }
+
+        .reason-card h5 {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .reason-card p {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* CTA SECTION */
+        .franchise-cta {
+            background: #000;
+            color: #fff;
+            padding: 80px 40px;
+            margin-top: 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .btn-franchise {
+            background: #e63946;
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            margin-top: 30px;
+        }
+
+        .btn-franchise:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+    </style>
+
+    <div class="container py-5">
+        <div class="row g-5 align-items-center mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <span class="franchise-badge">FRANCHISE OPPORTUNITY</span>
+                <h2 class="franchise-title">WANT A BIT <br> OF <span style="color:#e63946">THIS?</span></h2>
+                <p class="lead fw-bold text-dark">One team, one vision.</p>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="support-text">
+                    What sets us apart is the level of support we provide. Our franchisees benefit from a hands-on director level team with dedicated expertise across financial, operational, legal and marketing areas.
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-5">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="reason-card">
+                    <div class="reason-number">01</div>
+                    <div class="reason-icon">📍</div>
+                    <h5>Prime Locations</h5>
+                    <p>Locating the best and potential locations. Advice on lease process & initial legal matters.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="reason-card">
+                    <div class="reason-number">02</div>
+                    <div class="reason-icon">🛠️</div>
+                    <h5>Project Management</h5>
+                    <p>Dedicated Project Manager for complete setup of the branch from design to launch.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="reason-card">
+                    <div class="reason-number">03</div>
+                    <div class="reason-icon">🎓</div>
+                    <h5>Full Training</h5>
+                    <p>Comprehensive training on products, systems and procedures for you and your team.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="reason-card">
+                    <div class="reason-number">04</div>
+                    <div class="reason-icon">📈</div>
+                    <h5>Ongoing Support</h5>
+                    <p>Regular audits and support from Area Coaches and the Head Office team to ensure success.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="reason-card">
+                    <div class="reason-number">05</div>
+                    <div class="reason-icon">💰</div>
+                    <h5>Proven ROI</h5>
+                    <p>The CRAVE franchise constitutes a compelling offer in terms of sales and ROI.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="reason-card">
+                    <div class="reason-number">06</div>
+                    <div class="reason-icon">🤝</div>
+                    <h5>Mutual Success</h5>
+                    <p>We're fully focused on helping our franchisees succeed, because success should be mutual.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="franchise-cta" data-aos="zoom-in">
+            <h3 class="display-5 fw-black">READY TO JOIN THE FAMILY?</h3>
+            <p class="text-white-50 mt-3">Take the first step toward owning your own CRAVE.</p>
+            <button class="btn-franchise">Enquire Now</button>
+        </div>
+    </div>
+</section>

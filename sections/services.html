@@ -1,0 +1,129 @@
+<section id="services-section" class="py-5 overflow-hidden" style="background-color: #fcf8f1;">
+    <style>
+        #services-section {
+            --brand-orange: #d97706;
+            --brand-cream: #cdb694;
+            /* Modern Scroll Animation Logic */
+            view-timeline-name: --section-reveal;
+            view-timeline-axis: block;
+        }
+
+        .serif-font {
+            font-family: 'El Messiri', sans-serif;
+            font-weight: 700;
+        }
+
+        /* THE "MODERN" KEYFRAMES */
+        @keyframes reveal-from-left {
+            from { opacity: 0; transform: translateX(-150px) rotate(-5deg); filter: blur(10px); }
+            to { opacity: 1; transform: translateX(0) rotate(0); filter: blur(0); }
+        }
+
+        @keyframes reveal-from-right {
+            from { opacity: 0; transform: translateX(150px) rotate(5deg); filter: blur(10px); }
+            to { opacity: 1; transform: translateX(0) rotate(0); filter: blur(0); }
+        }
+
+        @keyframes reveal-from-bottom {
+            from { opacity: 0; transform: translateY(100px) scale(0.8); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        /* APPLYING ANIMATION BASED ON VIEWPORT POSITION */
+        .service-card-wrapper {
+            animation-timeline: --section-reveal;
+            animation-range: entry 10% contain 40%;
+            animation-fill-mode: both;
+        }
+
+        .card-left { animation-name: reveal-from-left; }
+        .card-center { animation-name: reveal-from-bottom; }
+        .card-right { animation-name: reveal-from-right; }
+
+        /* LUXURY CARD DESIGN */
+        .service-card {
+            background: #ffffff;
+            border: none;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 0%;
+            background: var(--brand-orange);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-20px);
+            color: #fff !important;
+        }
+
+        .service-card:hover .text-muted, 
+        .service-card:hover h3 {
+            color: #fff !important;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .price-badge {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 25px;
+            border: 1px solid var(--brand-orange);
+            color: var(--brand-orange);
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .service-card:hover .price-badge {
+            border-color: #fff;
+            color: #fff;
+        }
+    </style>
+
+    <div class="container py-5">
+        <div class="text-center mb-5 service-card-wrapper card-center">
+            <h2 class="display-4 serif-font" style="color: #2d241e;">What We're Known For</h2>
+            <div class="mx-auto" style="height: 3px; width: 80px; background-color: var(--brand-orange);"></div>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 service-card-wrapper card-left">
+                <div class="card h-100 shadow-lg p-4 service-card">
+                    <div class="card-body text-center">
+                        <h3 class="serif-font h3">Smash Burgers</h3>
+                        <p class="text-muted">Premium British beef pressed for crispy edges and a juicy center.</p>
+                        <div class="price-badge">From £8.50</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 service-card-wrapper card-center">
+                <div class="card h-100 shadow-lg p-4 service-card">
+                    <div class="card-body text-center">
+                        <h3 class="serif-font h3">Fried Chicken</h3>
+                        <p class="text-muted">Double-breaded buttermilk chicken with our signature house sauces.</p>
+                        <div class="price-badge">From £7.95</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 service-card-wrapper card-right">
+                <div class="card h-100 shadow-lg p-4 service-card">
+                    <div class="card-body text-center">
+                        <h3 class="serif-font h3">Flavourful Wings</h3>
+                        <p class="text-muted">Crispy wings tossed in Buffalo, BBQ, or our high-heat Naga sauce.</p>
+                        <div class="price-badge">From £6.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

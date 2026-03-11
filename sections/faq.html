@@ -1,0 +1,139 @@
+<section id="faq-section" class="py-lg-10 py-5 bg-white overflow-hidden">
+    <style>
+        /* Ensuring Fonts are Imported */
+        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Playfair+Display:wght@700;900&display=swap');
+
+        :root {
+            --brand-orange: #d97706;
+            --deep-brown: #2d241e;
+        }
+
+        .py-lg-10 { padding: 100px 0; }
+
+        /* --- THE 0.6s SNAP ANIMATION --- */
+        .faq-reveal {
+            opacity: 0;
+            filter: blur(8px);
+            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .slide-left { transform: translateX(-100px); }
+        .slide-right { transform: translateX(100px); }
+        .slide-down { transform: translateY(-40px); }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translate(0) !important;
+            filter: blur(0);
+        }
+
+        /* --- CLIENT STYLE CHANGES --- */
+        .serif-font { 
+            font-family: 'Playfair Display', serif !important; 
+            letter-spacing: -1px;
+            font-weight: 900;
+        }
+        
+        .modern-font { 
+            font-family: 'El Messiri', sans-serif !important; 
+        }
+
+        .accordion-item {
+            border: none !important;
+            border-bottom: 1px solid #f0f0f0 !important;
+            background: transparent;
+        }
+
+        .accordion-button {
+            font-family: 'El Messiri', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--deep-brown);
+            padding: 25px 0;
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: var(--brand-orange);
+        }
+
+        .accordion-button::after {
+            background-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-body {
+            font-family: 'Inter', sans-serif;
+            padding: 0 0 25px 0;
+            color: #6c757d;
+            line-height: 1.7;
+        }
+    </style>
+
+    <div class="container py-5">
+        <h2 class="serif-font text-center mb-5 faq-reveal slide-down" style="color: var(--deep-brown); font-size: 3rem;">
+            GOT QUESTIONS?
+        </h2>
+
+        <div class="accordion accordion-flush mx-auto" id="craveFAQ" style="max-width: 850px;">
+            
+            <div class="accordion-item faq-reveal slide-left">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                        Is your meat Halal?
+                    </button>
+                </h2>
+                <div id="q1" class="accordion-collapse collapse" data-bs-parent="#craveFAQ">
+                    <div class="accordion-body">
+                        Yes, we are proud to serve 100% Halal-certified British beef and chicken. Quality and transparency are at the heart of everything we do.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-reveal slide-right">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                        What makes it a "Smash" Burger?
+                    </button>
+                </h2>
+                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#craveFAQ">
+                    <div class="accordion-body">
+                        Unlike traditional burgers, we "smash" our beef balls onto a scorching hot grill. This creates a Maillard reaction, resulting in a thin, crispy, and incredibly flavourful crust while keeping the inside juicy.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-reveal slide-left">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+                        How can I order for delivery?
+                    </button>
+                </h2>
+                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#craveFAQ">
+                    <div class="accordion-body">
+                        You can order directly through our website for the best prices, or find us on major delivery platforms across Norwich. Our delivery hours are 12:00 PM to 11:00 PM daily.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const homeFaqObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const elements = entry.target.querySelectorAll('.faq-reveal');
+                    elements.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.classList.add('reveal-visible');
+                        }, index * 150); 
+                    });
+                }
+            });
+        }, { threshold: 0.2 });
+
+        homeFaqObserver.observe(document.querySelector('#faq-section'));
+    </script>
+</section>
