@@ -1,6 +1,5 @@
 <section id="blog-section" class="py-lg-10 py-5 overflow-hidden" style="background-color: #2d241e; color: #e7d8c3;">
     <style>
-        /* --- FONT IMPORTS (Crucial for Client Presentation) --- */
         @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Playfair+Display:wght@700;900&display=swap');
 
         :root {
@@ -14,11 +13,9 @@
         .reveal-hidden {
             opacity: 0;
             filter: blur(10px);
-            /* Ultra-smooth snap transition */
             transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* Directional start positions */
         .slide-left { transform: translateX(-120px); }
         .slide-right { transform: translateX(120px); }
         .slide-up { transform: translateY(80px); }
@@ -44,10 +41,33 @@
         .blog-card-custom {
             background-color: #1a1512 !important;
             border-top: 4px solid var(--brand-orange);
-            padding: 2.5rem;
-            height: 100%; /* Ensures all cards are same height */
+            height: 100%;
             transition: all 0.4s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Important for image zoom */
+        }
+
+        /* Image Styling */
+        .blog-card-img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: brightness(0.8);
+        }
+
+        .blog-card-content {
+            padding: 2rem;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -58,6 +78,11 @@
             background-color: #231c17 !important;
             border-top-width: 10px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .blog-card-custom:hover .blog-card-img {
+            transform: scale(1.1);
+            filter: brightness(1);
         }
 
         .blog-date {
@@ -80,7 +105,7 @@
     <div class="container py-5">
         <div class="d-flex justify-content-between align-items-end mb-5 reveal-hidden slide-left">
             <div>
-                <h2 class="serif-font display-4 mb-0 text-uppercase">The Daily Crunch</h2>
+                <h2 class="serif-font display-4 mb-0 text-uppercase">Latest Articles</h2>
                 <p class="modern-font mb-0 text-white-50" style="font-size: 1.2rem;">Fresh stories from the Crave kitchen</p>
             </div>
             <a href="#" class="view-all-posts">VIEW ALL POSTS →</a>
@@ -89,39 +114,54 @@
         <div class="row g-4 align-items-stretch">
             <div class="col-lg-4">
                 <div class="blog-card-custom reveal-hidden slide-left">
-                    <div>
-                        <small class="text-uppercase blog-date">March 2026</small>
-                        <h3 class="serif-font mt-3 fw-bold h2">The Secret <br>Smash</h3>
-                        <p class="modern-font text-white-50 mt-3" style="font-weight: 400; line-height: 1.6;">The science of the crust. Why 450°F and a custom steel press make the magic happen.</p>
+                    <div class="blog-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop" class="blog-card-img" alt="Smash Burger">
                     </div>
-                    <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
-                        <span class="small fw-black text-uppercase text-white modern-font">Read Article +</span>
+                    <div class="blog-card-content">
+                        <div>
+                            <small class="text-uppercase blog-date">March 12, 2026</small>
+                            <h3 class="serif-font mt-3 fw-bold h2">The Secret <br>Smash</h3>
+                            <p class="modern-font text-white-50 mt-3" style="font-weight: 400; line-height: 1.6;">The science of the crust. Why 450°F and a custom steel press make the magic happen.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
+                            <span class="small fw-black text-uppercase text-white modern-font">Read Article +</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="blog-card-custom reveal-hidden slide-up">
-                    <div>
-                        <small class="text-uppercase blog-date">Feb 2026</small>
-                        <h3 class="serif-font mt-3 fw-bold h2">NYC <br>Expansion</h3>
-                        <p class="modern-font text-white-50 mt-3" style="font-weight: 400; line-height: 1.6;">Crossing the Atlantic. Crave is bringing the heat to Manhattan this spring.</p>
+                    <div class="blog-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" class="blog-card-img" alt="NYC Restaurant">
                     </div>
-                    <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
-                        <span class="small fw-black text-uppercase text-white modern-font">Read Article +</span>
+                    <div class="blog-card-content">
+                        <div>
+                            <small class="text-uppercase blog-date">March 08, 2026</small>
+                            <h3 class="serif-font mt-3 fw-bold h2">Manhattan <br>Grand Opening</h3>
+                            <p class="modern-font text-white-50 mt-3" style="font-weight: 400; line-height: 1.6;">Crossing the Atlantic. Crave is bringing the heat to Manhattan this spring.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
+                            <span class="small fw-black text-uppercase text-white modern-font">Read Article +</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="blog-card-custom reveal-hidden slide-right">
-                    <div>
-                        <small class="text-uppercase blog-date">Jan 2026</small>
-                        <h3 class="serif-font mt-3 fw-bold h2">Best Wings <br>Award</h3>
-                        <p class="modern-font text-white-50 mt-3" style="font-weight: 400; line-height: 1.6;">Voted #1 spot for Buffalo Wings. A huge thank you to our amazing local community.</p>
+                    <div class="blog-card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=800" alt="Kunafa" class="blog-card-img" alt="Award Winning Wings">
                     </div>
-                    <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
-                        <span class="small fw-black text-uppercase text-white modern-font">Read Article +</span>
+                    <div class="blog-card-content">
+                        <div>
+                            <small class="text-uppercase blog-date">March 01, 2026</small>
+                            <h3 class="serif-font mt-3 fw-bold h2"><br>Buffalo Wings</h3>
+                            <p class="modern-font text-white-50 mt-3" style="font-weight: 400; line-height: 1.6;">Voted #1 spot for Buffalo Wings. A huge thank you to our amazing local community.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
+                            <span class="small fw-black text-uppercase text-white modern-font">Read Article +</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,7 +175,6 @@
                     const allElements = Array.from(document.querySelectorAll('#blog-section .reveal-hidden'));
                     const index = allElements.indexOf(entry.target);
                     
-                    // Client-ready staggered delay
                     setTimeout(() => {
                         entry.target.classList.add('reveal-visible');
                     }, index * 120); 

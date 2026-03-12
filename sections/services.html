@@ -47,6 +47,9 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 1;
+            /* Added padding for better vertical balance without prices */
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
         }
 
         .service-card::before {
@@ -72,20 +75,7 @@
             height: 100%;
         }
 
-        .price-badge {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 25px;
-            border: 1px solid var(--brand-orange);
-            color: var(--brand-orange);
-            font-weight: 700;
-            transition: 0.3s;
-        }
-
-        .service-card:hover .price-badge {
-            border-color: #fff;
-            color: #fff;
-        }
+        /* Price-badge class removed as per client request */
     </style>
 
     <div class="container py-5">
@@ -98,9 +88,8 @@
             <div class="col-md-4 service-card-wrapper card-left">
                 <div class="card h-100 shadow-lg p-4 service-card">
                     <div class="card-body text-center">
-                        <h3 class="serif-font h3">Smash Burgers</h3>
-                        <p class="text-muted">Premium British beef pressed for crispy edges and a juicy center.</p>
-                        <div class="price-badge">From £8.50</div>
+                        <h3 class="serif-font h3 mb-3">Smash Burgers</h3>
+                        <p class="text-muted mb-0">Premium British beef pressed for crispy edges and a juicy center.</p>
                     </div>
                 </div>
             </div>
@@ -108,9 +97,8 @@
             <div class="col-md-4 service-card-wrapper card-center">
                 <div class="card h-100 shadow-lg p-4 service-card">
                     <div class="card-body text-center">
-                        <h3 class="serif-font h3">Fried Chicken</h3>
-                        <p class="text-muted">Double-breaded buttermilk chicken with our signature house sauces.</p>
-                        <div class="price-badge">From £7.95</div>
+                        <h3 class="serif-font h3 mb-3">Fried Chicken</h3>
+                        <p class="text-muted mb-0">Double-breaded buttermilk chicken with our signature house sauces.</p>
                     </div>
                 </div>
             </div>
@@ -118,9 +106,8 @@
             <div class="col-md-4 service-card-wrapper card-right">
                 <div class="card h-100 shadow-lg p-4 service-card">
                     <div class="card-body text-center">
-                        <h3 class="serif-font h3">Flavourful Wings</h3>
-                        <p class="text-muted">Crispy wings tossed in Buffalo, BBQ, or our high-heat Naga sauce.</p>
-                        <div class="price-badge">From £6.00</div>
+                        <h3 class="serif-font h3 mb-3">Flavourful Wings</h3>
+                        <p class="text-muted mb-0">Crispy wings tossed in Buffalo, BBQ, or our high-heat Naga sauce.</p>
                     </div>
                 </div>
             </div>

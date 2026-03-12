@@ -13,12 +13,11 @@
             transform: translateY(0);
         }
 
+        /* Logo container optimized for alignment */
         .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 3rem);
-            font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1;
+            display: block;
+            line-height: 0;
+            /* margin-bottom: 20px; */
         }
 
         .footer-heading {
@@ -29,6 +28,8 @@
             letter-spacing: 3px;
             color: #d97706;
             margin-bottom: 25px;
+            /* Added padding to align top edge with the logo image */
+            padding-top: 5px; 
         }
 
         .footer-link {
@@ -95,7 +96,10 @@
     <div class="container">
         <div class="row g-4 g-lg-5">
             <div class="col-lg-4 footer-reveal">
-                <div class="footer-logo mb-4">CRAVE</div>
+                <div class="footer-logo">
+                    <img src="assets/logo.png" alt="CRAVE Logo" style="height: 150px; width: auto; display: block; margin-top: -25px;">
+                </div>
+                
                 <p class="text-white-50 pe-lg-5 mb-4">Serving Norwich’s finest 100% British beef smash burgers and signature buttermilk chicken. Freshly made, seriously bold.</p>
                 <div class="d-flex">
                     <a href="#" class="social-circle" aria-label="Facebook">FB</a>

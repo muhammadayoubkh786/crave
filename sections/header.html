@@ -35,7 +35,8 @@
     }
 
     .navbar-brand img {
-        height: 100px; 
+        height: 160px;
+        /* height: 100px;  */
         width: auto;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         transform-origin: left center;
@@ -44,8 +45,8 @@
     }
     
     .header-scrolled .navbar-brand img {
-        height: 80px; /* Scales down slightly to fit the scrolled bar */
         margin-top: 0;
+        height: 150px;
     }
 
     /* TEXT COLORS & BRANDING */
@@ -169,6 +170,14 @@
 
     /* Mobile Menu - Brand Cream #cdb694 */
     @media (max-width: 991px) {
+        /* FIX: Pull the logo and hamburger up so they don't look low */
+        .navbar-brand img {
+            margin-top: -45px !important;
+        }
+        .navbar-toggler {
+            margin-top: -35px !important;
+        }
+
         .navbar-collapse {
             background: #cdb694; 
             padding: 20px;
