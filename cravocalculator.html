@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Calculator | Cravo</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&family=Inter:wght@400;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-orange: #d97706; 
+            --deep-brown: #af7148; 
+            --brand-cream: #cdb694; 
+            --soft-white: #f8f9fa;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #020617; 
+            color: var(--soft-white);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .brand-font { font-family: 'El Messiri', sans-serif; font-weight: 700; }
+
+        /* Header Fix */
+        #header-section {
+            position: fixed;
+            top: 0; width: 100%; z-index: 10000;
+        }
+
+        /* Responsive Main Container */
+        .main-calculator-content {
+            flex: 1 0 auto;
+            padding-top: 140px; /* Offset for fixed header */
+            padding-bottom: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Fixed Footer Container */
+        #footer-section {
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .mesh-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(at 0% 0%, rgba(217, 119, 6, 0.1) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(175, 113, 72, 0.1) 0px, transparent 50%),
+                        radial-gradient(at 50% 50%, #020617 0px, transparent 100%);
+            z-index: -1;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2.5rem;
+            padding: 3rem;
+        }
+
+        /* INPUT FIELD FIX: Visible Background and Clear Border */
+        .revenue-input-group {
+            position: relative;
+            background: rgba(255, 255, 255, 0.07); /* Darker visible background [cite: 38] */
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid rgba(217, 119, 6, 0.5); /* Brand orange border [cite: 61, 62] */
+            transition: all 0.3s ease;
+        }
+
+        .revenue-input-group:focus-within {
+            border-color: var(--brand-orange);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(217, 119, 6, 0.2);
+        }
+
+        .custom-input {
+            background: transparent !important;
+            border: none !important;
+            color: var(--brand-orange) !important;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2rem, 8vw, 4rem); /* Responsive font size  */
+            font-weight: 800;
+            width: 100%;
+            padding-left: 3.5rem;
+            outline: none;
+        }
+
+        .input-symbol {
+            position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%);
+            font-size: clamp(1.5rem, 6vw, 3rem); font-weight: 800; color: var(--brand-orange);
+        }
+
+        /* Results Boxes */
+        .data-box {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .lost-val { color: #f43f5e; font-size: 2rem; font-weight: 800; }
+        .fixed-val { color: var(--brand-cream); font-size: 2rem; font-weight: 800; }
+
+        /* Savings Hero Card [cite: 54] */
+        .savings-card {
+            background: linear-gradient(135deg, var(--brand-orange) 0%, #92400e 100%);
+            border-radius: 2rem;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .savings-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 800;
+        }
+
+        @media (max-width: 768px) {
+            .glass-panel { padding: 1.5rem; border-radius: 1.5rem; }
+            .main-calculator-content { padding-top: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mesh-bg"></div>
+
+    <header id="header-section"></header>
+
+    <main class="main-calculator-content container-xl">
+        <div class="glass-panel w-100">
+            <div class="row g-4 g-lg-5 align-items-center">
+                
+                <div class="col-lg-7">
+                    <div class="mb-4">
+                        <h2 class="display-5 brand-font text-white mb-2">Profit Intelligence</h2>
+                        <p class="text-uppercase tracking-widest fw-bold opacity-50 small">Enter your monthly revenue</p>
+                    </div>
+
+                    <div class="revenue-input-group mb-4">
+                        <span class="input-symbol">£</span>
+                        <input type="text" id="revenue" placeholder="10,000" class="custom-input" autocomplete="off">
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="data-box">
+                                <p class="small fw-bold opacity-40 text-uppercase mb-1">Third-Party Platform Cost (30% commission) 
+</p>
+                                <div id="commission-output" class="lost-val">£0</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="data-box">
+                                <p class="small fw-bold opacity-40 text-uppercase mb-1">Cravo Flat Fee </p>
+                                
+                                <div class="fixed-val">£60</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="savings-card">
+                        <h3 class="brand-font h4 text-white opacity-90 mb-0">Total Monthly Savings</h3>
+                        <div id="savings-output" class="savings-number text-white">£0</div>
+                        <p class="fw-bold text-white opacity-75 mb-4">Keep your hard-earned profits.</p>
+                        <a href="https://cravedesign.netlify.app/" target="_blank" class="btn btn-light rounded-pill px-4 py-3 fw-bold text-uppercase w-100">
+                            Get Started with Cravo 
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer-section"></footer>
+
+  <script>
+        // --- Modular Loader ---
+        async function loadSection(id, file) {
+            try {
+                const response = await fetch(`sections/${file}`);
+                const html = await response.text();
+                document.getElementById(id).innerHTML = html;
+                const scripts = document.getElementById(id).querySelectorAll("script");
+                scripts.forEach(s => {
+                    const newScript = document.createElement("script");
+                    if (s.src) newScript.src = s.src;
+                    else newScript.text = s.text;
+                    document.body.appendChild(newScript);
+                });
+            } catch (e) { console.error("Load Error:", e); }
+        }
+
+        // --- Updated Calculator Core Logic ---
+        const input = document.getElementById('revenue');
+        const commOut = document.getElementById('commission-output');
+        const saveOut = document.getElementById('savings-output');
+        let state = { c: 0, s: 0 };
+
+        const fmt = new Intl.NumberFormat('en-GB', {
+            style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0
+        });
+
+        function calculate() {
+            // 1. Get raw numeric value
+            let rawVal = input.value.replace(/[^0-9]/g, '');
+            let numericRevenue = parseFloat(rawVal) || 0;
+
+            // 2. Apply Formula: Commission (30%) and Savings (Commission - 60)
+            let commission = numericRevenue * 0.30; 
+            let savings = Math.max(0, commission - 60); // Ensures savings don't go negative
+
+            // 3. GSAP Animated Count-up for the premium feel
+            gsap.to(state, {
+                c: commission,
+                s: savings,
+                duration: 1,
+                ease: "power2.out",
+                onUpdate: () => {
+                    commOut.innerText = fmt.format(state.c);
+                    saveOut.innerText = fmt.format(state.s);
+                }
+            });
+
+            // 4. Update input display with commas without breaking cursor position
+            if (rawVal !== "") {
+                input.value = Number(rawVal).toLocaleString('en-GB');
+            }
+        }
+
+        input.addEventListener('input', calculate);
+
+        window.onload = () => {
+            loadSection('header-section', 'header.html');
+            loadSection('footer-section', 'footer.html');
+            
+            // Default Example: £10,000 Revenue -> £3,000 Comm -> £2,940 Savings
+            input.value = "10,000";
+            calculate();
+        };
+    </script>
+</body>
+</html>
