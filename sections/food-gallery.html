@@ -3,20 +3,17 @@
         :root { 
             --brand-orange: #d97706;
             --deep-brown: #2d241e;
-            --brand-cream: #cdb694; /* Your Gallery accent */
+            --brand-cream: #cdb694; 
         }
         
         .py-lg-10 { padding: 100px 0; }
 
-        /* --- ANIMATION STATES (Like your About Section) --- */
         .reveal-frame {
             opacity: 0;
             transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Slide from Left */
         .reveal-left { transform: translateX(-80px); }
-        /* Slide from Right */
         .reveal-right { transform: translateX(80px); }
 
         .reveal-frame.visible {
@@ -24,7 +21,6 @@
             transform: translateX(0) translateY(0);
         }
 
-        /* --- GALLERY STYLING --- */
         .food-gallery-title {
             font-size: clamp(2.5rem, 8vw, 6rem);
             font-weight: 900;
@@ -96,14 +92,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* color: var(--brand-cream); */
             text-decoration: none;
             transition: 0.4s;
         }
 
         .food-frame:hover .discover-btn {
             background: var(--brand-cream);
-            /* color: #fff; */
+            color: white !important;
         }
     </style>
 
@@ -111,10 +106,18 @@
 
     <div class="container position-relative">
         <div class="row g-4 g-lg-5 align-items-center mb-5">
-            <div class="col-lg-6">
+            <div class="col-lg-5 offset-lg-1 py-4 reveal-frame reveal-right order-first order-lg-last">
+                <h2 class="food-gallery-title mb-4">Our <br><span style="color:var(--brand-cream)"> Menu</span></h2>
+                <p class="lead text-muted mb-4">100% Grass-Fed Aberdeen Angus Beef, smashed with onions and secret spices. This isn't just a burger; it's a legacy.</p>
+                <div class="d-none d-lg-block">
+                    <hr style="width: 50px; border-top: 3px solid var(--brand-cream); opacity: 1;">
+                </div>
+            </div>
+
+            <div class="col-lg-6 order-last order-lg-first">
                 <div class="food-frame reveal-frame reveal-left">
                     <div class="img-reveal-wrap ratio-tall">
-                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1200" alt="Oklahoma">
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1200" alt="Oklahoma Burger">
                     </div>
                     <div class="food-meta d-flex justify-content-between align-items-end mt-4">
                         <div>
@@ -125,26 +128,18 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="col-lg-5 offset-lg-1 py-4 reveal-frame reveal-right">
-                <h2 class="food-gallery-title mb-4">THE <br><span style="color:var(--brand-cream)">ART</span> OF <br> BEEF</h2>
-                <p class="lead text-muted mb-4">100% Grass-Fed Aberdeen Angus Beef, smashed with onions and secret spices. This isn't just a burger; it's a legacy.</p>
-                <div class="d-none d-lg-block">
-                    <hr style="width: 50px; border-top: 3px solid var(--brand-cream); opacity: 1;">
-                </div>
-            </div>
         </div>
 
         <div class="row g-4 g-lg-5">
             <div class="col-lg-4">
                 <div class="food-frame offset-top reveal-frame reveal-left">
                     <div class="img-reveal-wrap ratio-tall">
-                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=800" alt="Kunafa">
+                        <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=800" alt="Fried Chicken">
                     </div>
                     <div class="food-meta d-flex justify-content-between align-items-end mt-4">
                         <div>
-                            <span class="food-category">Dessert</span>
-                            <h3 class="fw-black">KUNAFA <br> CAKE</h3>
+                            <span class="food-category">Crispy Classic</span>
+                            <h3 class="fw-black">FRIED <br> CHICKEN</h3>
                         </div>
                         <a href="#" class="discover-btn">→</a>
                     </div>
@@ -154,12 +149,12 @@
             <div class="col-lg-8">
                 <div class="food-frame reveal-frame reveal-right">
                     <div class="img-reveal-wrap ratio-wide">
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200" alt="Pulled Lamb">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=1200" alt="Fried Chicken Platter">
                     </div>
                     <div class="food-meta d-flex justify-content-between align-items-end mt-4">
                         <div>
-                            <span class="food-category">Slow Cooked</span>
-                            <h3 class="fw-black">WE PULLED <br> THE LAMB</h3>
+                            <span class="food-category">Golden Perfection</span>
+                            <h3 class="fw-black"> CHICKEN   <br> WINGS </h3>
                         </div>
                         <a href="#" class="discover-btn">→</a>
                     </div>
@@ -169,7 +164,6 @@
     </div>
 
     <script>
-        // Trigger animations when they enter the screen
         const galleryObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -178,7 +172,6 @@
             });
         }, { threshold: 0.1 });
 
-        // Observe all reveal-frame items
         document.querySelectorAll('.reveal-frame').forEach(el => galleryObserver.observe(el));
     </script>
 </section>
