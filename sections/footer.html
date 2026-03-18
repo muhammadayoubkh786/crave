@@ -2,10 +2,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Playfair+Display:wght@700;900&display=swap');
 
-        /* Add padding to body to prevent content from being hidden behind fixed buttons */
-        body {
-            padding-bottom: 80px; /* Adjust based on button container height */
-            margin-bottom: 0;
+        /* Add padding to body only on mobile to prevent content from being hidden behind fixed buttons */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 80px;
+                margin-bottom: 0;
+            }
         }
 
         .footer-reveal {
@@ -98,99 +100,98 @@
             background: #b45309;
         }
 
-        /* Fixed action buttons at bottom of viewport */
+        /* Fixed action buttons - Only visible on mobile */
         .footer-action-buttons {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #0a0a0a;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 0;
-            z-index: 9999;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+            display: none; /* Hidden by default */
         }
 
-        .action-buttons-container {
-            display: flex;
-            flex-direction: row; /* Always in a row */
-            gap: 12px;
-            justify-content: center;
-            align-items: center;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .action-btn {
-            flex: 1; /* Both buttons take equal width */
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem; /* Small font size */
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-            min-width: 0; /* Prevents flex items from overflowing */
-        }
-
-        .call-btn {
-            background: transparent;
-            border: 2px solid #d97706;
-            color: #d97706;
-        }
-
-        .call-btn:hover {
-            background: #d97706;
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .order-btn {
-            background: #d97706;
-            color: #fff;
-            border: 2px solid #d97706;
-        }
-
-        .order-btn:hover {
-            background: #b45309;
-            border-color: #b45309;
-            transform: translateY(-2px);
-        }
-
-        .action-btn i {
-            font-size: 1rem;
-            font-style: normal;
-        }
-
-        /* Keep buttons in same row even on very small screens */
-        @media (max-width: 480px) {
-            .action-buttons-container {
-                flex-direction: row; /* Maintain row layout */
-                gap: 8px;
-                padding: 0 12px;
+        /* Show only on mobile screens */
+        @media (max-width: 768px) {
+            .footer-action-buttons {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: #0a0a0a;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                padding: 10px 0;
+                z-index: 9999;
+                box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
             }
-            
+
+            .action-buttons-container {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 0 15px;
+            }
+
             .action-btn {
-                padding: 8px 12px;
-                font-size: 0.75rem; /* Even smaller font on mobile */
+                flex: 1;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 10px 12px;
+                border-radius: 50px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                border: none;
+                cursor: pointer;
                 white-space: nowrap;
+            }
+
+            .call-btn {
+                background: transparent;
+                border: 2px solid #d97706;
+                color: #d97706;
+            }
+
+            .call-btn:hover {
+                background: #d97706;
+                color: #fff;
+            }
+
+            .order-btn {
+                background: #d97706;
+                color: #fff;
+                border: 2px solid #d97706;
+            }
+
+            .order-btn:hover {
+                background: #b45309;
+                border-color: #b45309;
+            }
+
+            .action-btn i {
+                font-size: 1rem;
+                font-style: normal;
+            }
+        }
+
+        /* For very small mobile screens */
+        @media (max-width: 480px) {
+            .action-btn {
+                font-size: 0.75rem;
+                padding: 8px 10px;
             }
             
             .action-btn i {
                 font-size: 0.9rem;
             }
             
-            body {
-                padding-bottom: 70px; /* Slightly smaller padding for mobile */
+            .action-buttons-container {
+                padding: 0 10px;
+                gap: 8px;
             }
         }
 
@@ -203,7 +204,7 @@
             
             .action-buttons-container {
                 gap: 5px;
-                padding: 0 8px;
+                padding: 10px 8px;
             }
         }
 
@@ -274,10 +275,10 @@
         </div>
     </div>
 
-    <!-- Fixed Action Buttons at Bottom - Always in Same Row -->
+    <!-- Fixed Action Buttons - Only visible on mobile screens -->
     <div class="footer-action-buttons">
         <div class="action-buttons-container">
-            <a href="tel:07446 946249" class="action-btn call-btn">
+            <a href="tel:+441603123456" class="action-btn call-btn">
                 <i>📞</i> Call Us
             </a>
             <a href="#" class="action-btn order-btn">
