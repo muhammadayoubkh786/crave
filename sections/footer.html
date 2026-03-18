@@ -2,6 +2,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Playfair+Display:wght@700;900&display=swap');
 
+        /* Add padding to body to prevent content from being hidden behind fixed buttons */
+        body {
+            padding-bottom: 80px; /* Adjust based on button container height */
+            margin-bottom: 0;
+        }
+
         .footer-reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -91,64 +97,192 @@
         .btn-subscribe:hover {
             background: #b45309;
         }
+
+        /* Fixed action buttons at bottom of viewport */
+        .footer-action-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #0a0a0a;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 0;
+            z-index: 9999;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+        }
+
+        .action-buttons-container {
+            display: flex;
+            flex-direction: row; /* Always in a row */
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .action-btn {
+            flex: 1; /* Both buttons take equal width */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem; /* Small font size */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            min-width: 0; /* Prevents flex items from overflowing */
+        }
+
+        .call-btn {
+            background: transparent;
+            border: 2px solid #d97706;
+            color: #d97706;
+        }
+
+        .call-btn:hover {
+            background: #d97706;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .order-btn {
+            background: #d97706;
+            color: #fff;
+            border: 2px solid #d97706;
+        }
+
+        .order-btn:hover {
+            background: #b45309;
+            border-color: #b45309;
+            transform: translateY(-2px);
+        }
+
+        .action-btn i {
+            font-size: 1rem;
+            font-style: normal;
+        }
+
+        /* Keep buttons in same row even on very small screens */
+        @media (max-width: 480px) {
+            .action-buttons-container {
+                flex-direction: row; /* Maintain row layout */
+                gap: 8px;
+                padding: 0 12px;
+            }
+            
+            .action-btn {
+                padding: 8px 12px;
+                font-size: 0.75rem; /* Even smaller font on mobile */
+                white-space: nowrap;
+            }
+            
+            .action-btn i {
+                font-size: 0.9rem;
+            }
+            
+            body {
+                padding-bottom: 70px; /* Slightly smaller padding for mobile */
+            }
+        }
+
+        /* For extremely small screens */
+        @media (max-width: 360px) {
+            .action-btn {
+                font-size: 0.7rem;
+                padding: 8px 8px;
+            }
+            
+            .action-buttons-container {
+                gap: 5px;
+                padding: 0 8px;
+            }
+        }
+
+        /* Ensure footer has proper spacing at bottom */
+        footer {
+            margin-bottom: 0 !important;
+        }
     </style>
 
-    <div class="container">
-        <div class="row g-4 g-lg-5">
-            <div class="col-lg-4 footer-reveal">
-                <div class="footer-logo">
-                    <img src="assets/logo.png" alt="CRAVE Logo" style="height: 150px; width: auto; display: block; margin-top: -25px;">
+    <div class="footer-content">
+        <div class="container">
+            <div class="row g-4 g-lg-5">
+                <div class="col-lg-4 footer-reveal">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="CRAVE Logo" style="height: 150px; width: auto; display: block; margin-top: -25px;">
+                    </div>
+                    
+                    <p class="text-white-50 pe-lg-5 mb-4">Serving Norwich’s finest 100% British beef smash burgers and signature buttermilk chicken. Freshly made, seriously bold.</p>
+                    <div class="d-flex">
+                        <a href="#" class="social-circle" aria-label="Facebook">FB</a>
+                        <a href="#" class="social-circle" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-circle" aria-label="TikTok">TK</a>
+                    </div>
                 </div>
-                
-                <p class="text-white-50 pe-lg-5 mb-4">Serving Norwich’s finest 100% British beef smash burgers and signature buttermilk chicken. Freshly made, seriously bold.</p>
-                <div class="d-flex">
-                    <a href="#" class="social-circle" aria-label="Facebook">FB</a>
-                    <a href="#" class="social-circle" aria-label="Instagram">IG</a>
-                    <a href="#" class="social-circle" aria-label="TikTok">TK</a>
+
+                <div class="col-6 col-lg-2 footer-reveal">
+                    <h5 class="footer-heading">Navigate</h5>
+                    <nav>
+                        <a href="#about" class="footer-link">Our Story</a>
+                        <a href="#food-gallery" class="footer-link">The Food</a>
+                        <a href="#locations" class="footer-link">Locations</a>
+                        <a href="#faq-section" class="footer-link">FAQs</a>
+                    </nav>
+                </div>
+
+                <div class="col-6 col-lg-3 footer-reveal">
+                    <h5 class="footer-heading">Visit Us</h5>
+                    <address style="font-style: normal;">
+                        <span class="footer-link">The Terrace, NR1 3EB</span>
+                        <span class="footer-link">Colney Lane, NR4</span>
+                        <span class="footer-link">Dereham (Coming Soon)</span>
+                    </address>
+                </div>
+
+                <div class="col-lg-3 footer-reveal">
+                    <h5 class="footer-heading">Get Offers</h5>
+                    <p class="small text-white-50 mb-3">Join our list for exclusive local deals.</p>
+                    <form onsubmit="event.preventDefault();">
+                        <input type="email" class="newsletter-input" placeholder="Email Address" required>
+                        <button type="submit" class="btn-subscribe">Sign Up</button>
+                    </form>
                 </div>
             </div>
 
-            <div class="col-6 col-lg-2 footer-reveal">
-                <h5 class="footer-heading">Navigate</h5>
-                <nav>
-                    <a href="#about" class="footer-link">Our Story</a>
-                    <a href="#food-gallery" class="footer-link">The Food</a>
-                    <a href="#locations" class="footer-link">Locations</a>
-                    <a href="#faq-section" class="footer-link">FAQs</a>
-                </nav>
-            </div>
-
-            <div class="col-6 col-lg-3 footer-reveal">
-                <h5 class="footer-heading">Visit Us</h5>
-                <address style="font-style: normal;">
-                    <span class="footer-link">The Terrace, NR1 3EB</span>
-                    <span class="footer-link">Colney Lane, NR4</span>
-                    <span class="footer-link">Dereham (Coming Soon)</span>
-                </address>
-            </div>
-
-            <div class="col-lg-3 footer-reveal">
-                <h5 class="footer-heading">Get Offers</h5>
-                <p class="small text-white-50 mb-3">Join our list for exclusive local deals.</p>
-                <form onsubmit="event.preventDefault();">
-                    <input type="email" class="newsletter-input" placeholder="Email Address" required>
-                    <button type="submit" class="btn-subscribe">Sign Up</button>
-                </form>
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="footer-reveal">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="small text-white-50 m-0">© 2026 CRAVE KITCHEN NORWICH. ALL RIGHTS RESERVED.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                        <a href="#" class="small text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="small text-white-50 text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
-        
-        <div class="footer-reveal">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="small text-white-50 m-0">© 2026 CRAVE KITCHEN NORWICH. ALL RIGHTS RESERVED.</p>
-                </div>
-                <div class="col-md-6 text-md-end mt-2 mt-md-0">
-                    <a href="#" class="small text-white-50 text-decoration-none me-3">Privacy Policy</a>
-                    <a href="#" class="small text-white-50 text-decoration-none">Terms of Service</a>
-                </div>
-            </div>
+    <!-- Fixed Action Buttons at Bottom - Always in Same Row -->
+    <div class="footer-action-buttons">
+        <div class="action-buttons-container">
+            <a href="tel:07446 946249" class="action-btn call-btn">
+                <i>📞</i> Call Us
+            </a>
+            <a href="#" class="action-btn order-btn">
+                <i>🍔</i> Order Online
+            </a>
         </div>
     </div>
 
